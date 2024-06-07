@@ -13,6 +13,7 @@ const socket = io();
 
 const isConnected = ref(false);
 const transport = ref("N/A");
+const toast = useToast();
 
 if (socket.connected) {
     onConnect();
@@ -36,7 +37,12 @@ socket.on("connect", onConnect);
 socket.on("disconnect", onDisconnect);
 
 socket.on("hello", (value) => {
-  console.log(value);
+    toast.add({
+        title: `แจ้งเตือนระดับ ${value.alertLevel}`,
+        description: `ระดับน้ำสูง ${value.waterLevelM} เวลา ${value.timestamp}`,
+        icon: "i-heroicons-exclamation-triangle-solid",
+        timeout: 0,
+    });
 });
 
 onBeforeUnmount(() => {
