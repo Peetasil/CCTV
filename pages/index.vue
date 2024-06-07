@@ -37,6 +37,8 @@ socket.on("connect", onConnect);
 socket.on("disconnect", onDisconnect);
 
 socket.on("hello", (value) => {
+
+    console.log(value)
     toast.add({
         title: `แจ้งเตือนระดับ ${value.alertLevel}`,
         description: `ระดับน้ำสูง ${value.waterLevelM} เวลา ${value.timestamp}`,
