@@ -2,6 +2,11 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
     modules: ["@nuxt/ui", "@pinia/nuxt", "@pinia-plugin-persistedstate/nuxt"],
+    nitro: {
+        experimental: {
+            websocket: true,
+        },
+    },
     imports: {
         dirs: ["stores"],
     },
