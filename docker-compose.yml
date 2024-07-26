@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  frontend:
+    container_name: ${NUXT_PUBLIC_APP_NAME}
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    ports:
+      - "${NUXT_PORT:-3000}:${NUXT_PORT:-3000}"
+    expose:
+      - "${NUXT_PORT:-3000}"
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=${NODE_ENV}
+      - NUXT_PUBLIC_VERSION=${NUXT_PUBLIC_VERSION}
+      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?schema=public
+      - TZ=Asia/Bangkok
+
+
+     
