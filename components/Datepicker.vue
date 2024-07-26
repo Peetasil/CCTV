@@ -2,7 +2,6 @@
 import { DatePicker as VCalendarDatePicker } from 'v-calendar'
 import type { DatePickerDate, DatePickerRangeObject } from 'v-calendar/dist/types/src/use/datePicker'
 import 'v-calendar/dist/style.css'
-import { defineProps, defineEmits, computed } from 'vue'
 
 const props = defineProps({
   modelValue: {
@@ -31,8 +30,7 @@ const attrs = {
 </script>
 
 <template>
-  <VCalendarDatePicker v-if="date && (typeof date === 'object')" v-model="date" :columns="2" v-bind="{ ...attrs, ...$attrs }" />
-  <VCalendarDatePicker v-else v-model="date" v-bind="{ ...attrs, ...$attrs }" />
+  <VCalendarDatePicker v-model="date" mode="dateTime" hide-time-header v-bind="{ ...attrs, ...$attrs }" />
 </template>
 
 <style>
